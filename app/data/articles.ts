@@ -9,7 +9,26 @@ export type ArticleBlock = {
   rows?: string[][];
 };
 
-export const article = {
+export type Article = {
+  id: string;
+  title: string;
+  originalTitle?: string;
+  authors: string;
+  year: number;
+  journal: string;
+  doi: string;
+  license: string;
+  readingMinutes: number;
+  note: string;
+  category: string;
+  railLabel: string;
+  viewer: "blocks" | "pdf";
+  blocks?: ArticleBlock[];
+  sourceUrl?: string;
+  pageCount?: number;
+};
+
+const abdiArticle = {
   id: "abdi-amrit-2021",
   title: "Uma revisão dos métodos de previsão de tempo de viagem e de chegada em redes rodoviárias",
   originalTitle: "A review of travel and arrival-time prediction methods on road networks: classification, challenges and opportunities",
@@ -19,6 +38,9 @@ export const article = {
   doi: "https://doi.org/10.7717/peerj-cs.689",
   license: "CC BY 4.0",
   readingMinutes: 42,
+  category: "Revisão sistemática",
+  railLabel: "Abdi & Amrit",
+  viewer: "blocks",
   note: "Edição traduzida e adaptada para leitura. O texto corrido foi reorganizado em blocos curtos; as extensas tabelas de inventário foram condensadas, preservando os resultados e comparações centrais. Figuras permanecem no idioma original.",
   blocks: [
     { id: "resumo", kind: "heading", text: "Resumo" },
@@ -99,4 +121,40 @@ export const article = {
     { id: "declaracoes", kind: "paragraph", text: "O trabalho foi financiado pela NWO no projeto 439.16.120 (Complexity Methods for Predictive Synchromodality). Os financiadores não participaram do desenho, coleta, análise, decisão de publicação ou redação. Chintan Amrit era editor acadêmico da PeerJ; os autores declararam não haver outros conflitos de interesse." },
     { id: "citacao", kind: "quote", text: "Referência: ABDI, Asad; AMRIT, Chintan. A review of travel and arrival-time prediction methods on road networks: classification, challenges and opportunities. PeerJ Computer Science, v. 7, e689, 2021. DOI: 10.7717/peerj-cs.689." }
   ] satisfies ArticleBlock[],
-};
+} satisfies Article;
+
+const caracasArticle = {
+  id: "caracas-bernardinis-bastos-2018",
+  title: "Pesquisa de qualidade no transporte público de Curitiba: análises e considerações",
+  authors: "A. C. C. Caracas, M. A. P. Bernardinis e J. T. Bastos",
+  year: 2018,
+  journal: "1º Simpósio de Transportes do Paraná — UFPR",
+  doi: "https://doi.org/10.5380/1stpr2018.artcomp17p173-181",
+  license: "Documento integral na fonte UFPR",
+  readingMinutes: 18,
+  category: "Estudo de Curitiba",
+  railLabel: "Caracas et al.",
+  viewer: "pdf",
+  pageCount: 9,
+  sourceUrl: "https://acervodigital.ufpr.br/xmlui/bitstream/handle/1884/93197/3161.pdf?isAllowed=y&sequence=1",
+  note: "Artigo integral, em português, exibido diretamente a partir do acervo oficial da UFPR. Use a navegação do leitor para salvar em qual página parou.",
+} satisfies Article;
+
+const qualionibusArticle = {
+  id: "qualionibus-curitiba-2025",
+  title: "Pesquisa de Satisfação QualiÔnibus — Curitiba 2025",
+  authors: "WRI Brasil e URBS — Urbanização de Curitiba",
+  year: 2025,
+  journal: "Relatório da pesquisa do sistema de ônibus municipal de Curitiba — edição 2025/2",
+  doi: "https://www.urbs.curitiba.pr.gov.br/pdf/transporte/Relat%C3%B3rio%20Quali%C3%94nibus%20-%20Curitiba%202025.pdf",
+  license: "Documento integral na fonte URBS",
+  readingMinutes: 55,
+  category: "Relatório de pesquisa",
+  railLabel: "QualiÔnibus",
+  viewer: "pdf",
+  pageCount: 67,
+  sourceUrl: "https://www.urbs.curitiba.pr.gov.br/pdf/transporte/Relat%C3%B3rio%20Quali%C3%94nibus%20-%20Curitiba%202025.pdf",
+  note: "Relatório integral, em português, exibido diretamente a partir da fonte oficial da URBS. Tabelas, gráficos e páginas permanecem no formato original.",
+} satisfies Article;
+
+export const articles: Article[] = [abdiArticle, caracasArticle, qualionibusArticle];
