@@ -22,10 +22,9 @@ export type Article = {
   note: string;
   category: string;
   railLabel: string;
-  viewer: "blocks" | "pdf";
-  blocks?: ArticleBlock[];
+  viewer: "blocks";
+  blocks: ArticleBlock[];
   sourceUrl?: string;
-  pageCount?: number;
 };
 
 const abdiArticle = {
@@ -130,14 +129,44 @@ const caracasArticle = {
   year: 2018,
   journal: "1º Simpósio de Transportes do Paraná — UFPR",
   doi: "https://doi.org/10.5380/1stpr2018.artcomp17p173-181",
-  license: "Documento integral na fonte UFPR",
-  readingMinutes: 18,
+  license: "Edição de leitura — fonte UFPR",
+  readingMinutes: 16,
   category: "Estudo de Curitiba",
   railLabel: "Caracas et al.",
-  viewer: "pdf",
-  pageCount: 9,
+  viewer: "blocks",
   sourceUrl: "https://acervodigital.ufpr.br/xmlui/bitstream/handle/1884/93197/3161.pdf?isAllowed=y&sequence=1",
-  note: "Artigo integral, em português, exibido diretamente a partir do acervo oficial da UFPR. Use a navegação do leitor para salvar em qual página parou.",
+  note: "Edição de leitura estruturada a partir do artigo em português. A redação foi adaptada para telas pequenas, preservando método, resultados numéricos, discussão e conclusões. O original permanece disponível no acervo da UFPR.",
+  blocks: [
+    { id: "caracas-resumo", kind: "heading", text: "Resumo" },
+    { id: "caracas-resumo-1", kind: "paragraph", text: "O estudo analisa uma pesquisa de qualidade realizada com usuários do transporte coletivo de Curitiba. O objetivo é compreender quem usa o sistema, como essas pessoas se deslocam, quanto tempo gastam, quais atributos avaliam melhor ou pior e o que pode explicar a permanência no ônibus mesmo quando existe acesso ao automóvel." },
+    { id: "caracas-resumo-2", kind: "paragraph", text: "Os autores tratam a percepção do passageiro como parte essencial da avaliação do transporte público. A qualidade não é reduzida à operação técnica: envolve acesso, integração, informação, confiabilidade, conforto, segurança, rapidez e disponibilidade." },
+
+    { id: "caracas-contexto", kind: "heading", text: "Contexto e problema de pesquisa" },
+    { id: "caracas-contexto-1", kind: "paragraph", text: "O transporte coletivo tem papel decisivo na mobilidade urbana porque permite deslocamentos em larga escala usando menos espaço viário por passageiro. Ao mesmo tempo, a escolha do ônibus depende da experiência percebida pelo usuário. Um sistema operacionalmente eficiente pode ainda ser rejeitado se a viagem for desconfortável, insegura ou excessivamente demorada." },
+    { id: "caracas-objetivos", kind: "list", text: "Questões examinadas", items: ["Qual é o perfil socioeconômico e de deslocamento dos passageiros pesquisados?", "Quais aspectos do serviço geram satisfação e insatisfação?", "Quanto tempo diário é consumido no transporte coletivo?", "Quem são os usuários que poderiam usar automóvel, mas continuam viajando de ônibus?", "Que fatores econômicos e operacionais podem explicar essa escolha?"] },
+
+    { id: "caracas-metodo", kind: "heading", text: "Método e amostra" },
+    { id: "caracas-metodo-1", kind: "paragraph", text: "A análise utiliza dados de uma pesquisa aplicada em Curitiba em 2008. Depois do tratamento das respostas, foram considerados 1.987 questionários válidos. O instrumento reuniu informações sobre frequência de uso, motivo da viagem, quantidade de ônibus utilizados, tempo de deslocamento, acesso ao automóvel e avaliação de diferentes atributos do sistema." },
+    { id: "caracas-amostra", kind: "table", text: "Retrato geral da amostra", rows: [["Indicador", "Resultado"], ["Questionários válidos", "1.987"], ["Usavam transporte público em todos os dias úteis", "64%"], ["Viagens pendulares", "78%"], ["Motivo trabalho", "53%"], ["Motivo estudo", "25%"], ["Usavam linhas com canaletas exclusivas", "59%"], ["Usuários considerados cativos", "42%"]] },
+
+    { id: "caracas-padroes", kind: "heading", text: "Padrões de deslocamento" },
+    { id: "caracas-padroes-1", kind: "paragraph", text: "O passageiro usava, em média, 2,08 ônibus em cada sentido da viagem. Metade da amostra precisava de dois ônibus para chegar ao destino, o que evidencia a importância da integração física e tarifária. A predominância de viagens por trabalho e estudo também mostra um público que depende de regularidade e previsibilidade nos horários de pico." },
+    { id: "caracas-tempo", kind: "table", text: "Tempo consumido no transporte", rows: [["Grupo", "Tempo médio diário de ida e volta"], ["Amostra total", "1 hora e 36 minutos"], ["Usuários diários", "1 hora e 44 minutos"], ["Usuários diários com automóvel e habilitação", "1 hora e 45 minutos"]] },
+    { id: "caracas-congestionamento", kind: "paragraph", text: "Cerca de 59% dos respondentes percebiam muito congestionamento nos trajetos. Apenas 24% aceitariam pagar uma tarifa maior em troca de melhora do serviço. Esses resultados sugerem que rapidez e confiabilidade são relevantes, mas que qualquer proposta tecnológica também precisa respeitar a sensibilidade do usuário ao custo." },
+
+    { id: "caracas-qualidade", kind: "heading", text: "Qualidade percebida" },
+    { id: "caracas-qualidade-tabela", kind: "table", text: "Atributos destacados pelos usuários", rows: [["Avaliação mais favorável", "Avaliação mais crítica"], ["Acesso ao sistema", "Segurança"], ["Integração", "Conforto"], ["Informações", "Rapidez"], ["Confiabilidade", "Disponibilidade"]] },
+    { id: "caracas-qualidade-1", kind: "paragraph", text: "A combinação dos resultados é importante para o projeto: informação e confiabilidade já eram dimensões valorizadas, enquanto rapidez aparecia entre as fragilidades. Um sistema de previsão de chegada não resolve sozinho os problemas operacionais, mas pode reduzir a incerteza percebida e tornar mais transparente o tempo de espera e de viagem." },
+
+    { id: "caracas-escolha", kind: "heading", text: "Usuários com possibilidade de usar automóvel" },
+    { id: "caracas-escolha-1", kind: "paragraph", text: "Entre os usuários diários, 176 pessoas possuíam carteira de habilitação e automóvel disponível, correspondendo a cerca de 9% da amostra total. Nesse grupo, 74,2% viajavam por trabalho e 22,7% por estudo; 52,3% usavam corredores exclusivos e aproximadamente metade precisava de dois ônibus por sentido." },
+    { id: "caracas-escolha-2", kind: "paragraph", text: "Dos passageiros diários com acesso ao automóvel, 63% recebiam vale-transporte ou cartão custeado pelo empregador. Os autores consideram que o incentivo financeiro, somado a dificuldades de estacionamento e congestionamento, pode ajudar a explicar a escolha pelo ônibus. O resultado alerta que preferência modal não depende apenas da qualidade percebida." },
+
+    { id: "caracas-conclusao", kind: "heading", text: "Conclusões e uso na IC" },
+    { id: "caracas-conclusao-1", kind: "paragraph", text: "O trabalho mostra que o público do transporte coletivo de Curitiba é heterogêneo: inclui usuários cativos e pessoas que dispõem de alternativa individual. A experiência de viagem resulta da combinação de tempo, custo, integração, acesso, informação, conforto e segurança. Melhorar somente um atributo não garante migração ou permanência no sistema." },
+    { id: "caracas-aplicacao", kind: "list", text: "O que este artigo oferece ao projeto", items: ["Um retrato histórico de Curitiba que pode ser comparado com pesquisas recentes.", "Variáveis de público-alvo úteis para segmentar usuários: frequência, motivo, acesso ao carro, número de integrações e tempo de viagem.", "Justificativa para tratar informação e confiabilidade como requisitos do sistema de ETA.", "Evidência de que custo e tempo precisam ser considerados juntos em uma solução de baixo custo.", "Uma base para discutir usuários cativos e usuários por escolha."] },
+    { id: "caracas-referencia", kind: "quote", text: "Referência: CARACAS, A. C. C.; BERNARDINIS, M. A. P.; BASTOS, J. T. Pesquisa de qualidade no transporte público de Curitiba: análises e considerações. 1º Simpósio de Transportes do Paraná, 2018. DOI: 10.5380/1stpr2018.artcomp17p173-181." }
+  ] satisfies ArticleBlock[],
 } satisfies Article;
 
 const qualionibusArticle = {
@@ -147,14 +176,64 @@ const qualionibusArticle = {
   year: 2025,
   journal: "Relatório da pesquisa do sistema de ônibus municipal de Curitiba — edição 2025/2",
   doi: "https://www.urbs.curitiba.pr.gov.br/pdf/transporte/Relat%C3%B3rio%20Quali%C3%94nibus%20-%20Curitiba%202025.pdf",
-  license: "Documento integral na fonte URBS",
-  readingMinutes: 55,
+  license: "Edição de leitura — fonte URBS/WRI Brasil",
+  readingMinutes: 32,
   category: "Relatório de pesquisa",
   railLabel: "QualiÔnibus",
-  viewer: "pdf",
-  pageCount: 67,
+  viewer: "blocks",
   sourceUrl: "https://www.urbs.curitiba.pr.gov.br/pdf/transporte/Relat%C3%B3rio%20Quali%C3%94nibus%20-%20Curitiba%202025.pdf",
-  note: "Relatório integral, em português, exibido diretamente a partir da fonte oficial da URBS. Tabelas, gráficos e páginas permanecem no formato original.",
+  note: "Edição de leitura estruturada do relatório em português. Os resultados, recortes e comparações centrais foram transpostos para texto e tabelas responsivas; o relatório original permanece ligado como fonte oficial.",
+  blocks: [
+    { id: "quali-apresentacao", kind: "heading", text: "Apresentação" },
+    { id: "quali-apresentacao-1", kind: "paragraph", text: "A Pesquisa de Satisfação QualiÔnibus mede a experiência dos passageiros do transporte coletivo de Curitiba. O relatório permite identificar o perfil de quem usa o sistema, os padrões de viagem, a avaliação de diferentes atributos e os pontos que mais afetam a satisfação geral." },
+    { id: "quali-leitura", kind: "paragraph", text: "Para a iniciação científica, o relatório é especialmente útil porque aproxima a tecnologia do seu público real. Ele mostra quem pode usar uma previsão de chegada, em quais horários, com quais limitações de renda e acessibilidade e quais problemas não serão resolvidos apenas por um aplicativo." },
+
+    { id: "quali-metodo", kind: "heading", text: "Como a pesquisa foi realizada" },
+    { id: "quali-metodo-1", kind: "paragraph", text: "Foram entrevistados 958 passageiros entre 15 e 26 de setembro de 2025, em dias úteis. A coleta abrangeu 106 linhas convencionais e oito linhas de BRT, distribuídas ao longo do dia, aproximadamente entre 6h e 19h29. Por isso, os resultados descrevem principalmente a experiência de usuários em deslocamentos regulares durante a semana." },
+    { id: "quali-metodo-tabela", kind: "table", text: "Escopo da coleta", rows: [["Item", "Resultado"], ["Entrevistados", "958"], ["Período", "15 a 26 de setembro de 2025"], ["Linhas convencionais", "106"], ["Linhas BRT", "8"], ["Dias pesquisados", "Dias úteis"], ["Faixa horária aproximada", "6h a 19h29"]] },
+
+    { id: "quali-perfil", kind: "heading", text: "Perfil dos passageiros" },
+    { id: "quali-genero", kind: "table", text: "Gênero e raça/cor declarados", rows: [["Indicador", "Percentual"], ["Mulheres", "61,2%"], ["Homens", "38,4%"], ["Outro gênero", "0,4%"], ["Branca", "56,9%"], ["Parda", "30,5%"], ["Preta", "8,9%"]] },
+    { id: "quali-idade", kind: "table", text: "Distribuição por idade", rows: [["Faixa", "Percentual"], ["Até 24 anos", "24,8%"], ["25 a 34 anos", "19,1%"], ["35 a 44 anos", "18,9%"], ["45 a 54 anos", "15,7%"], ["55 a 64 anos", "13,4%"], ["65 anos ou mais", "7,6%"]] },
+    { id: "quali-escolaridade-renda", kind: "paragraph", text: "Aproximadamente 60,6% dos entrevistados tinham escolaridade até o ensino médio completo. Quase 59% pertenciam a famílias com renda de até dois salários mínimos. Esse perfil reforça que qualquer serviço digital deve funcionar bem em aparelhos simples, consumir poucos dados e oferecer informação clara, sem exigir familiaridade técnica." },
+    { id: "quali-ocupacao", kind: "table", text: "Principais ocupações", rows: [["Ocupação", "Percentual"], ["Empregado do setor privado", "56,8%"], ["Estudante", "11,9%"], ["Trabalhador por conta própria", "11,3%"], ["Aposentado", "6,7%"]] },
+    { id: "quali-internet", kind: "paragraph", text: "O acesso digital é amplo: 93,9% declararam usar internet diariamente ou quase todos os dias. Isso sustenta a utilidade de um serviço móvel em tempo real, mas não elimina a necessidade de alternativas acessíveis, como informação nos pontos, painéis, áudio, interfaces de alto contraste e comunicação que continue útil em conexões instáveis." },
+
+    { id: "quali-uso", kind: "heading", text: "Como o transporte é usado" },
+    { id: "quali-frequencia", kind: "paragraph", text: "O ônibus faz parte da rotina: 72,6% utilizavam o sistema em cinco ou mais dias por semana. O trabalho aparecia como motivo de viagem para 79,3% e o estudo para 19,3%. As faixas de maior uso eram de 5h a 9h, citada por 70,1%, e de 17h a 19h, citada por 30,8%." },
+    { id: "quali-alternativas", kind: "table", text: "Alternativas ao ônibus", rows: [["Alternativa declarada", "Percentual"], ["Transporte por aplicativo", "38,3%"], ["Nenhuma alternativa", "25,2%"], ["Dirigir automóvel", "19,4%"], ["Ir como passageiro de automóvel", "17,6%"]] },
+    { id: "quali-alternativas-1", kind: "paragraph", text: "Um quarto dos entrevistados não tinha outra opção de deslocamento. Ao mesmo tempo, o transporte por aplicativo era a alternativa mais citada. A informação de chegada precisa, portanto, atender tanto a quem depende do ônibus quanto a quem compara tempo, conveniência e incerteza antes de escolher outro modo." },
+
+    { id: "quali-satisfacao", kind: "heading", text: "Satisfação com o sistema" },
+    { id: "quali-satisfacao-1", kind: "paragraph", text: "A satisfação geral recebeu nota 7,0. Entre os grupos de atributos, atendimento foi avaliado com 7,5, integração com 7,3, acesso com 7,2 e informação com 7,0. Os resultados indicam uma avaliação global positiva, mas com diferenças relevantes entre dimensões da experiência." },
+    { id: "quali-notas", kind: "table", text: "Notas destacadas no relatório", rows: [["Dimensão", "Nota"], ["Satisfação geral", "7,0"], ["Atendimento", "7,5"], ["Integração", "7,3"], ["Acesso", "7,2"], ["Informação", "7,0"], ["Ruído e poluição", "5,5"], ["Segurança pública", "4,9"]] },
+    { id: "quali-seguranca", kind: "paragraph", text: "Segurança pública foi o resultado mais crítico entre os destaques, com nota 4,9. Isso delimita o alcance de uma solução tecnológica: reduzir a incerteza da espera pode diminuir exposição desnecessária no ponto, mas a segurança depende também de políticas urbanas, infraestrutura, iluminação e operação." },
+
+    { id: "quali-brt", kind: "heading", text: "BRT e linhas convencionais" },
+    { id: "quali-brt-1", kind: "paragraph", text: "A avaliação de passageiros de BRT e de linhas convencionais foi semelhante. O BRT apresentou vantagem de 0,4 ponto em confiabilidade e 0,3 ponto em disponibilidade. A diferença é pequena, mas coerente com características como segregação de parte do trajeto e maior frequência operacional." },
+
+    { id: "quali-acesso", kind: "heading", text: "Acesso e experiência até o embarque" },
+    { id: "quali-acesso-tabela", kind: "table", text: "Avaliação do acesso", rows: [["Aspecto", "Nota"], ["Chegar ao local de embarque", "7,3"], ["Distância percorrida a pé", "7,1"], ["Facilidade para embarcar e desembarcar", "7,1"], ["Informação sobre locais de embarque", "6,5"], ["Calçadas e travessias", "5,8"]] },
+    { id: "quali-acessibilidade", kind: "paragraph", text: "Cinco por cento dos entrevistados declararam possuir alguma deficiência. A leitura desse resultado junto às notas de calçadas, travessias e embarque mostra que acessibilidade não deve ser tratada apenas dentro do veículo. Uma interface de ETA também precisa considerar leitores de tela, contraste, tamanho do texto e comunicação não exclusivamente visual." },
+
+    { id: "quali-tarifa", kind: "heading", text: "Percepção da tarifa" },
+    { id: "quali-tarifa-tabela", kind: "table", text: "Avaliação do valor pago", rows: [["Relação avaliada", "Nota"], ["Tarifa e distância percorrida", "6,1"], ["Tarifa e qualidade do serviço", "5,9"], ["Tarifa e renda", "5,4"], ["Valor da tarifa", "5,0"]] },
+    { id: "quali-tarifa-1", kind: "paragraph", text: "As quatro avaliações de tarifa melhoraram em relação a 2024, mas o valor absoluto continuou entre os pontos de atenção. Como quase 59% das famílias estavam na faixa de até dois salários mínimos, o projeto de informação deve evitar transferir custos para o passageiro e aproveitar dados e aparelhos já disponíveis." },
+
+    { id: "quali-publico", kind: "heading", text: "Públicos prioritários para o projeto" },
+    { id: "quali-publico-lista", kind: "list", text: "Perfis que o sistema deve contemplar", items: ["Passageiro frequente que depende do ônibus para trabalhar e precisa decidir quando sair.", "Estudante que combina horários de aula, integrações e deslocamentos fora do pico.", "Usuário sem alternativa modal, para quem uma previsão incorreta pode causar perda de compromisso.", "Passageiro que compara ônibus e transporte por aplicativo.", "Pessoa idosa ou com deficiência, que pode precisar de mais tempo e informação acessível para embarcar.", "Usuário de baixa renda e aparelho simples, sensível ao consumo de dados.", "Passageiro em local inseguro, que se beneficia de reduzir espera desnecessária."] },
+
+    { id: "quali-requisitos", kind: "heading", text: "Requisitos derivados para uma solução de ETA" },
+    { id: "quali-requisitos-lista", kind: "list", text: "O que os dados sugerem", items: ["Interface móvel rápida, legível e com baixo consumo de dados.", "Previsão acompanhada de horário da última atualização e nível de confiança.", "Funcionamento especialmente confiável nos picos da manhã e do fim da tarde.", "Acessibilidade por teclado, leitor de tela, contraste e tamanho ajustável.", "Informação por linha, ponto e sentido para reduzir ambiguidades.", "Possibilidade futura de canais além do celular, como painéis, QR Code ou mensagens.", "Avaliação do sistema não apenas por erro médio, mas também por impacto na espera percebida e na confiança do usuário."] },
+
+    { id: "quali-limites", kind: "heading", text: "Limites de interpretação" },
+    { id: "quali-limites-1", kind: "paragraph", text: "A pesquisa retrata usuários presentes no sistema durante dias úteis e nas faixas pesquisadas. Ela não representa automaticamente pessoas que deixaram de usar o ônibus, viagens de madrugada ou fins de semana, nem toda a diversidade de necessidades de acessibilidade. Para definir o público-alvo do protótipo, os dados devem ser combinados com testes de uso e entrevistas específicas." },
+
+    { id: "quali-conclusao", kind: "heading", text: "Síntese para a iniciação científica" },
+    { id: "quali-conclusao-1", kind: "paragraph", text: "O passageiro típico encontrado pela pesquisa usa o ônibus intensamente, sobretudo para trabalhar, tem forte presença feminina, renda familiar concentrada nas faixas mais baixas e acesso frequente à internet. Informação já é uma dimensão relativamente bem avaliada, mas confiabilidade, segurança, acesso e custo continuam interligados à experiência." },
+    { id: "quali-conclusao-2", kind: "paragraph", text: "A principal implicação é que o ETA deve ser pensado como serviço de redução de incerteza, não como simples número na tela. A previsão precisa ser compreensível, atualizada, acessível e barata para o usuário. Seu valor deve ser medido por quanto ajuda pessoas reais a planejar a saída, a integração e o tempo de espera." },
+    { id: "quali-referencia", kind: "quote", text: "Referência: WRI Brasil; URBS — Urbanização de Curitiba. Pesquisa de Satisfação QualiÔnibus: Curitiba 2025. Relatório da edição 2025/2." }
+  ] satisfies ArticleBlock[],
 } satisfies Article;
 
 export const articles: Article[] = [abdiArticle, caracasArticle, qualionibusArticle];
