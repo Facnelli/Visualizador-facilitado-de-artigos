@@ -133,12 +133,6 @@ footer a { display: inline-flex; align-items: center; gap: 6px; color: var(--mut
 .side-notes > button:hover { color: var(--ink); }
 .side-notes > p { color: var(--muted); font: 13px/1.5 Georgia, serif; }
 .source-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-size: 12px; font-weight: 750; }
-.pdf-layout { grid-template-columns: 92px minmax(0, 900px) 190px; }
-.pdf-page { padding: 42px clamp(24px, 4vw, 52px) 30px; }
-.pdf-reader { overflow: hidden; background: var(--surface-2); border: 1px solid var(--line); }
-.pdf-reader iframe { width: 100%; height: min(78vh, 980px); display: block; background: white; border: 0; }
-.pdf-fallback { min-height: 52px; display: flex; align-items: center; gap: 10px; padding: 12px 15px; color: var(--muted); border-top: 1px solid var(--line); font-size: 12px; }
-.pdf-fallback a { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; color: var(--accent); font-weight: 750; }
 .floating-highlight { position: fixed; z-index: 60; display: flex; align-items: center; gap: 7px; transform: translate(-50%, -100%); padding: 10px 14px; color: #2e2910; background: #f5dc69; border: 0; border-radius: 999px; box-shadow: 0 8px 26px rgba(0,0,0,.2); cursor: pointer; font-size: 12px; font-weight: 800; }
 
 .drawer-backdrop { position: fixed; inset: 0; z-index: 70; display: flex; justify-content: flex-end; background: rgba(6, 15, 12, .43); backdrop-filter: blur(3px); }
@@ -185,10 +179,6 @@ footer a { display: inline-flex; align-items: center; gap: 6px; color: var(--mut
   .reading-progress { top: 62px; }
   .reader-layout { width: 100%; display: block; padding: 0; }
   .article-page { min-height: calc(100vh - 65px); padding: 42px 22px 25px; border: 0; box-shadow: none; }
-  .pdf-page { padding: 30px 14px 24px; }
-  .pdf-reader iframe { height: 68vh; }
-  .pdf-fallback { flex-wrap: wrap; }
-  .pdf-fallback a { width: 100%; margin-left: 28px; }
   .article-header { padding-bottom: 32px; margin-bottom: 30px; }
   .article-header h1 { font-size: 38px; }
   .article-content { line-height: 1.72; }
